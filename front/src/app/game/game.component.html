@@ -1,3 +1,11 @@
-<p>
-  game works!
-</p>
+<div *ngIf="!isGameStarted; else alreadyRegistered">
+  <app-player-register (playerRegistered)="playerRegistered(player)"></app-player-register>
+</div>
+
+<ng-template #alreadyRegistered>
+  <div>
+    <h2>Temps écoulé</h2>
+    <h2>{{ gameElapsedTime | date: format }}</h2>
+  </div>
+</ng-template>
+

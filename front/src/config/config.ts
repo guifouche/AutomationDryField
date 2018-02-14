@@ -8,5 +8,6 @@ export const Config = {
   timeForAfieldToBeMature: moment(20, 's'),
   harvestSellingPrice: 40,
   waterBuyingPrice: 1,
+  waterBuyingAmout: 1
 
 };

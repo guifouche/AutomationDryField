@@ -25,10 +25,4 @@ export class Field {
    */
   public isHarvestingPossible: boolean;
 
-  constructor() {}
-
-  public sellHarvest(game: Game) {
-    return game.money + Config.harvestSellingPrice;
-  }
-
 }

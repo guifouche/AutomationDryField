@@ -1,34 +1,23 @@
+import { Observable } from 'rxjs/Observable';
+import * as Rx from 'rxjs/Rx';
+
 /**
  * Entity which represents a Game.
  *
  * @author Vincent Léné (vincent.lene.dl@gmail.com)
  */
-import { Config } from '../../../config/config';
-
 export class Game {
-
-  /**
-   * The number of harvests of the player.
-   */
-  public harvestCount: number;
-
-  /**
-   * The amount of money of the player.
-   */
-  public money: number;
-
-  /**
-   * The amount of water available to the player.
-   */
-  public waterAmount: number;
 
   /**
    * The elapsed time of the game.
    */
-  public elapsedTime: number;
+  public elapsedTime$ = new Observable<number>();
 
   constructor() {
-    this.money = Config.initialMoney;
+  }
+
+  public start() {
+    this.elapsedTime$ = Rx.Observable.timer(0, 1000);
   }
 
 }
