@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Field } from '../../core/models/field/Field';
-import * as config  from '../../config/config';
+import { Config} from '../../config/config';
 
 @Component({
   selector: 'app-field',
@@ -9,9 +9,10 @@ import * as config  from '../../config/config';
 })
 export class FieldComponent implements OnInit {
 
-public field: Field;
+  public field: Field;
+  public config = Config;
 
-  constructor() { 
+  constructor() {
     this.field = new Field();
   }
 

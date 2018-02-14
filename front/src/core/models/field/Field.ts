@@ -1,13 +1,12 @@
-import * as moment  from 'moment';
+import * as moment from 'moment';
 import { Config } from '../../../config/config';
+import { Cistern } from '../cistern/Cistern';
+
 /**
  * Entity which represents a Field.
  *
  * @author Vincent Léné (vincent.lene.dl@gmail.com)
  */
-import { Cistern } from '../cistern/Cistern';
-import { Game } from '../game/Game';
-
 export class Field {
 
   /**
@@ -45,15 +44,14 @@ export class Field {
     if (!this.isHarvestingPossible) {
       if (this.checkFieldIsDry()) {
         this.remainingTime = Config.timeForAfieldToBeMature;
-      }
-      else {
+      } else {
         this.cistern.capacity -= this.consumption;
       }
     }
   }
 
   public checkHarvestingPossible() {
-    if (this.remainingTime == moment.duration(0)) {
+    if (this.remainingTime === moment.duration(0)) {
       this.isHarvestingPossible = true;
     }
   }
@@ -67,7 +65,7 @@ export class Field {
   }
 
   public start() {
-    setInterval(this.grow(),Config.initialInterval);
+    setInterval(this.grow(), Config.initialInterval);
   }
 
   public resetHarvest() {
@@ -77,7 +75,7 @@ export class Field {
 
   public increaseConsumption() {
     if (this.consumption < 2) {
-      this.consumption += 0,1;
+      this.consumption += 0.1;
     }
   }
 

@@ -1,11 +1,11 @@
 <div class="field">
   <h2>Réserve d'eau : </h2>
-  <h2>{{ field.capacity }}</h2>
+  <h2>{{ field.cistern.capacity }}</h2>
 
   <img id="field" width="90%" height="90%" src="../../assets/images/sky-clouds-field-blue.jpg" alt="Field">
 
   <br />
-  <button id="irrigate" class="irrigate" (click)="irrigateField(config.initialAmountOfWater)">Arroser le champ</button>
+  <button id="irrigate" class="irrigate" (click)="irrigateField(config.irrigateAmount)">Arroser le champ</button>
   <button [disabled]="!checkHarvesting()" id="harvest" class="harvest" (click)="harvestField">Récolter le champ</button>
   <style ng-if="checkHarvesting()">
     .harvest { background-color: green }
