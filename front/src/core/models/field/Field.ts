@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { Config } from '../../../config/config';
 /**
  * Entity which represents a Field.
  *
@@ -27,7 +28,7 @@ export class Field {
   constructor() {}
 
   public sellHarvest(game: Game) {
-    game.money +
+    return game.money + Config.harvestSellingPrice;
   }
 
 }

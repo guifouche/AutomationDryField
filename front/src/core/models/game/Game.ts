@@ -3,6 +3,8 @@
  *
  * @author Vincent Léné (vincent.lene.dl@gmail.com)
  */
+import { Config } from '../../../config/config';
+
 export class Game {
 
   /**
@@ -24,5 +26,9 @@ export class Game {
    * The elapsed time of the game.
    */
   public elapsedTime: number;
+
+  constructor() {
+    this.money = Config.initialMoney;
+  }
 
 }

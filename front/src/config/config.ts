@@ -6,7 +6,7 @@ export const Config = {
   initialAmountOfWater: 3,
   initialConsumption: 1,
   timeForAfieldToBeMature: moment(20, 's'),
-  sellingPrice: 40,
+  harvestSellingPrice: 40,
   waterBuyingPrice: 1,
 
 };
