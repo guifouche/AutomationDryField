@@ -22,7 +22,7 @@ export class Field {
   /**
    * Boolean to figure out if the field is mature to be harvested.
    */
-  public isHarvestingPossible: boolean;
+  public isHarvestingPossible = false;
 
   /**
    * Number to specify the quantity of water consumed by the field each second

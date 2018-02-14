@@ -6,8 +6,5 @@
 
   <br />
   <button id="irrigate" class="irrigate" (click)="irrigateField(config.irrigateAmount)">Arroser le champ</button>
-  <button [disabled]="!checkHarvesting()" id="harvest" class="harvest" (click)="harvestField">Récolter le champ</button>
-  <style ng-if="checkHarvesting()">
-    .harvest { background-color: green }
-  </style>
+  <button [disabled]="!checkHarvesting()" ngClass="{{checkHarvesting() ? 'harvest' : 'notReady'}}" id="harvest" (click)="harvestField">Récolter le champ</button>
 </div>
