@@ -1,3 +1,5 @@
+import { Config } from '../../../config/config';
+
 /**
  * Entity which represents a Cistern.
  *
@@ -14,5 +16,9 @@ export class Cistern {
    * The owner of the cistern.
    */
   public owner: any;
+
+  constructor() {
+    this.capacity = Config.initialAmountOfWater;
+  }
 
 }

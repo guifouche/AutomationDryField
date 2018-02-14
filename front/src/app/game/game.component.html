@@ -1,3 +1,30 @@
-<p>
-  game works!
-</p>
+<div *ngIf="!isGameStarted; else alreadyRegistered">
+  <app-player-register (playerRegistered)="playerRegistered(player)"></app-player-register>
+</div>
+
+<ng-template #alreadyRegistered>
+  <div>
+    <h2>Temps écoulé</h2>
+    <h2>{{ gameElapsedTime | date: format }}</h2>
+    <div class="money">
+      <h2>Argent disponible : </h2>
+      <h2>{{ player?.money }}</h2>
+    </div>
+    <div class="water">
+      <h2>Réserve d'eau totale : </h2>
+      <h2>{{ player?.cistern.quantity }}</h2>
+    </div>
+    <div class="row">
+      <div class="column">
+        <app-field name="field" (field)="Field()"></app-field>
+      </div>
+      <div class="column">
+        <app-field name="field" (field)="Field()"></app-field>
+      </div>
+      <div class="column">
+        <app-field name="field" (field)="Field()"></app-field>
+      </div>
+    </div>
+  </div>
+  {{player}}
+</ng-template>

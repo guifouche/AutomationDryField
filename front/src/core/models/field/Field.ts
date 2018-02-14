@@ -34,6 +34,7 @@ export class Field {
     this.remainingTime = Config.timeForAfieldToBeMature;
     this.isHarvestingPossible = false;
     this.consumption = Config.initialConsumption;
+    this.cistern = new Cistern();
     this.start();
   }
 

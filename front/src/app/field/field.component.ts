@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Field } from '../../core/models/field/Field';
-import { Config } from '../../config/config';
+import * as config  from '../../config/config';
 
 @Component({
   selector: 'app-field',
@@ -22,6 +22,13 @@ public field: Field;
     this.field.irrigate(amount);
   }
 
+  public checkHarvesting() {
+    return this.field.isHarvestingPossible;
+  }
+
+  public harvestField() {
+    this.field.resetHarvest();
+  }
 
 
 }

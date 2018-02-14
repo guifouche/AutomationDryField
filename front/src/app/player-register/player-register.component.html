@@ -1,0 +1,18 @@
+<form [formGroup]="playerForm" class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-md-3" i18n>Nom du joueur</label>
+    <div class="col-md-9">
+      <input class="form-control" name="username" formControlName="username"/>
+    </div>
+  </div>
+  <div class="col-md-6 text-right">
+    <button [disabled]="!playerForm.valid"
+            class="btn btn-primary"
+            (click)="register()">
+      <i class="fa fa-save"></i> <span>Commencer</span>
+    </button>
+  </div>
+  <div *ngIf="playerForm.errors" class="alert alert-danger" align="center">
+    <span i18n>Veuillez entrer un nom</span>
+  </div>
+</form>

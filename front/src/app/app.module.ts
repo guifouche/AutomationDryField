@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component/app.component';
 import { GameComponent } from './game/game.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RoutingModule } from './modules/routing/routing.module';
 import { FieldComponent } from './field/field.component';
+import { PlayerRegisterComponent } from './player-register/player-register.component';
 
 
 @NgModule({
@@ -14,11 +15,14 @@ import { FieldComponent } from './field/field.component';
     AppComponent,
     GameComponent,
     PageNotFoundComponent,
-    FieldComponent
+    FieldComponent,
+    PlayerRegisterComponent
   ],
   imports: [
     BrowserModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
