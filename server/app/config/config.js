@@ -1,6 +1,6 @@
 module.exports = {
 
     'secret': 'ilovescotchyscotch',
-    'database': 'mongodb://127.0.0.1/nodeapp'
+    'database': 'mongodb://admin:admindryfield@ds235328.mlab.com:35328/dryfield'
 
 };

@@ -1,22 +1,21 @@
 // =======================
 // get the packages we need ============
 // =======================
-var express     = require('express');
-var app         = express();
-var bodyParser  = require('body-parser');
-var morgan      = require('morgan');
+const express     = require('express');
+const app         = express();
+const db          = require('./config/db');
+const bodyParser  = require('body-parser');
+const morgan      = require('morgan');
 let corser      = require('corser');
 
-var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var config = require('./config/config.js'); // get our config file
-var userRouter = require('./routers/userRouter');
-var emailRouter = require('./routers/emailRouter');
+const jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const config = require('./config/config.js'); // get our config file
 
 // =======================
 // configuration =========
 // =======================
-var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
-app.set('superSecret', config.secret); // secret variable
+const port = process.env.PORT || 8080; // used to create, sign, and verify tokens
+app.set('superSecret', config.secret); // secret constiable
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,17 +34,13 @@ app.use(corser.create());
 // routes ================
 // =======================
 
-//user routes
-app.use('/api/v1/user',userRouter);
-app.use('/api/v1/email',emailRouter);
-
 // basic route
 app.get('/', function(req, res) {
     res.send('Hello! The API is at http://localhost:' + port + '/api/v1/login');
 });
 
 // get an instance of the router for api routes
-var apiRoutes = express.Router();
+const apiRoutes = express.Router();
 
 // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
@@ -53,7 +48,7 @@ apiRoutes.use(function(req, res, next) {
   if(req.url != '/api/v1/user/login' && req.url != "/api/v1/user/register") {
 
       // check header or url parameters or post parameters for token
-      var token = req.body.token || req.query.token || req.headers['x-access-token'];
+      const token = req.body.token || req.query.token || req.headers['x-access-token'];
 
       // decode token
       if (token) {
