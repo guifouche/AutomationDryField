@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PlayerRegisterComponent } from './player-register.component';
 
@@ -8,7 +9,8 @@ describe('PlayerRegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerRegisterComponent ]
+      declarations: [ PlayerRegisterComponent ],
+      imports: [ ReactiveFormsModule, FormsModule ]
     })
     .compileComponents();
   }));

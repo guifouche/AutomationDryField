@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Config } from '../../config/config';
 import { Field } from '../../core/models/field/Field';
-import { Config} from '../../config/config';
 
 @Component({
   selector: 'app-field',
@@ -12,11 +12,14 @@ export class FieldComponent implements OnInit {
   public field: Field;
   public config = Config;
 
+  @Input() public playerWater;
+
   constructor() {
     this.field = new Field();
   }
 
   ngOnInit() {
+    this.playerWater = this.playerWater--;
   }
 
   public irrigateField(amount: number) {

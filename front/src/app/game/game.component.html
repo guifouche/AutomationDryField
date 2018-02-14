@@ -16,7 +16,7 @@
     </div>
     <div class="row">
       <div class="column">
-        <app-field name="field" (field)="Field()"></app-field>
+        <app-field name="field" (fieldHasBeenIrrigated)="retrieveWater($event)"></app-field>
       </div>
       <div class="column">
         <app-field name="field" (field)="Field()"></app-field>
