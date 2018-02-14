@@ -79,8 +79,9 @@ spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install'], {stdio: 'i
 });
 
 gulp.task('start-mongo',  (done) => {
-    spawn('mongod.exe', {cwd: 'C:\\Program Files\\MongoDB\\Server\\3.4\\bin\\', stdio: 'inherit'})
-.on('close', done);
+//     spawn('mongod.exe', {cwd: 'C:\\Program Files\\MongoDB\\Server\\3.4\\bin\\', stdio: 'inherit'})
+// .on('close', done);
+    done();
 });
 
 gulp.task('start-server', () => {
