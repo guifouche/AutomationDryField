@@ -24,6 +24,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+  public score;
+
 
   constructor() {
   }
@@ -61,6 +63,14 @@ export class GameComponent implements OnInit, OnDestroy {
       this.player.cistern.capacity += this.player.money/Config.waterBuyingPrice;
       this.player.money = 0;
     }
+  }
+
+  public setMoney(amount: number) {
+    this.player.money += amount;
+  }
+
+  public gameOver() {
+    this.score = this.gameElapsedTime;
   }
 
 }

@@ -13,6 +13,7 @@ export class FieldComponent implements OnInit {
 
   public field: Field;
   public config = Config;
+  public player: Player;
 
   @Output() public fieldIrrigated = new EventEmitter<number>();
   @Output() public fieldHarvested = new EventEmitter<number>();
@@ -36,6 +37,10 @@ export class FieldComponent implements OnInit {
   public harvestField(money: number) {
     this.field.resetHarvest();
     this.fieldHarvested.emit(money);
+  }
+
+  public checkEmptyMainCistern() {
+    return (this.player.cistern.capacity <= 0);
   }
 
 }

@@ -1,3 +1,7 @@
 .harvest {
-    background-color: brown;
+    background-color: green;
+}
+
+.notReady {
+  background-color: brown;
 }
