@@ -38,3 +38,4 @@
 
 // Look in ./config for karma.conf.js
 module.exports = require('./src/config/karma.conf.js');
+// module.exports = require('./src/config/karma.conf.dev.js');
