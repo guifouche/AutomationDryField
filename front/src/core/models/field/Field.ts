@@ -41,7 +41,7 @@ export class Field {
   }
 
   public grow() {
-  
+
     this.remainingTime.subtract(1, 's');
     this.checkHarvestingPossible();
 
@@ -49,7 +49,7 @@ export class Field {
       if (this.checkFieldIsDry()) {
         this.remainingTime = moment.duration(20, 's');
       } else {
-        
+
         this.cistern.capacity -= this.consumption;
       }
     }

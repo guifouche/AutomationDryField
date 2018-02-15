@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Config } from '../../config/config';
 import { Field } from '../../core/models/field/Field';
 import { Player } from '../../core/models/player/Player';
-import { Game } from '../../core/models/game/Game';
-import { Config} from '../../config/config';
 
 @Component({
   selector: 'app-field',

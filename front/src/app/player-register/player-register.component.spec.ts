@@ -24,4 +24,8 @@ describe('PlayerRegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should register a player if form value is correct', () => {
+  //   expect(component).toBeTruthy();
+  // });
 });

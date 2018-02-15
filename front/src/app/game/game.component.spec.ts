@@ -28,7 +28,7 @@ describe('GameComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('GameComponent should launch the app only after a player has registered', () => {
+  describe('playerRegistered : GameComponent should launch the app only after a player has registered', () => {
 
     const player: Player = new Player('test');
 
@@ -60,4 +60,18 @@ describe('GameComponent', () => {
       expect(this.isGameStarted).toBeTruthy();
     });
   });
+
+  it('should irrigate a field', () => {
+    const capacity = this.player.cistern.capacity;
+    const amount = 1;
+    this.playerIrrigatedField(amount);
+    expect(this.player.cistern.capacity).toEqual(capacity - amount);
+  });
+
+  it('should buy water', () => {
+    const capacity = this.player.cistern.capacity;
+    this.buyWater();
+    expect(capacity).toEqual(0);
+  });
+
 });
