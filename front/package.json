@@ -51,6 +51,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
     "protractor": "~5.1.2",
+    "saucelabs": "^1.4.0",
     "source-map-loader": "^0.2.1",
     "to-string-loader": "^1.1.5",
     "ts-node": "~4.1.0",
