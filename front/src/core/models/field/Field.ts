@@ -1,7 +1,6 @@
 import * as moment from 'moment';
 import { Config } from '../../../config/config';
 import { Cistern } from '../cistern/Cistern';
-import { Player } from '../player/Player';
 
 
 /**
@@ -31,7 +30,7 @@ export class Field {
    */
   public consumption: number;
 
-  public player: Player;
+  public interval;
 
   constructor() {
     this.remainingTime = Config.timeForAfieldToBeMature;
@@ -50,7 +49,6 @@ export class Field {
       if (this.checkFieldIsDry()) {
         this.remainingTime = moment.duration(20, 's');
       } else {
-
         this.cistern.capacity -= this.consumption;
       }
     }
@@ -72,7 +70,7 @@ export class Field {
   }
 
   public start() {
-    setInterval(this.grow.bind(this), Config.initialInterval);
+    this.interval = setInterval(this.grow.bind(this), Config.initialInterval);
   }
 
   public resetHarvest() {
@@ -84,6 +82,16 @@ export class Field {
     if (this.consumption < 2) {
       this.consumption += 0.05;
     }
+  }
+
+  public isGameOver() {
+    // if () {
+    this.stop();
+    // }
+  }
+
+  public stop() {
+    clearInterval(this.interval);
   }
 
 }
