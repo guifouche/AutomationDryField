@@ -33,45 +33,33 @@ describe('GameComponent', () => {
     const player: Player = new Player('test');
 
     it('should not have the isGameStarted flag set to true', () => {
-      expect(this.isGameStarted).toBeFalsy();
+      expect(component.isGameStarted).toBeFalsy();
     });
 
     it('should not have a player before the method playerRegistered is called', () => {
-      expect(this.player).toBeUndefined();
+      expect(component.player).toBeUndefined();
     });
 
     it('should not have a game before the method playerRegistered is called', () => {
-      expect(this.game).toBeUndefined();
+      expect(component.game).toBeUndefined();
     });
+    // Method call
 
-    it('should call method start on this.game', () => {
-
-      this.playerRegistered(player);
-
-      spyOn(this.game, 'start');
-      expect(this.game.start).toHaveBeenCalled();
+    it('should call method playerRegistered on component', () => {
+      spyOn(component, 'playerRegistered').and.callThrough();
+      component.playerRegistered(player);
+      expect(component.playerRegistered).toHaveBeenCalled();
     });
 
     it('should add the sub to the subscription array', () => {
-      expect(this.subscriptions.length).toEqual(1);
+      component.playerRegistered(player);
+      expect(component.subscriptions.length).toEqual(1);
     });
 
     it('should have the isGameStarted flag set to true', () => {
-      expect(this.isGameStarted).toBeTruthy();
+      component.playerRegistered(player);
+      expect(component.isGameStarted).toBeTruthy();
     });
-  });
-
-  it('should irrigate a field', () => {
-    const capacity = this.player.cistern.capacity;
-    const amount = 1;
-    this.playerIrrigatedField(amount);
-    expect(this.player.cistern.capacity).toEqual(capacity - amount);
-  });
-
-  it('should buy water', () => {
-    const capacity = this.player.cistern.capacity;
-    this.buyWater();
-    expect(capacity).toEqual(0);
   });
 
 });

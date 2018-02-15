@@ -73,7 +73,8 @@ module.exports = function (config) {
     // coverageReporter: {
     //   type: 'in-memory'
     // },
-    reporters: ['progress', 'junit', 'dots', 'saucelabs'],
+    coverageReporter: { dir: 'coverage/', includeAllSources: true },
+    reporters: ['progress', 'junit', 'saucelabs', 'coverage-istanbul'],
 
     // the default configuration
     junitReporter: {

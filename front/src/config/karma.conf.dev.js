@@ -3,7 +3,7 @@
  */
 
 module.exports = function (config) {
-  var testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
+  var testWebpackConfig = require('./webpack.test.js')({env: 'test'});
 
   var configuration = {
 
@@ -30,8 +30,8 @@ module.exports = function (config) {
      * we are building the test environment in ./spec-bundle.js
      */
     files: [
-      { pattern: './src/config/spec-bundle.js', watched: false },
-      { pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false },
+      {pattern: './src/config/spec-bundle.js', watched: false},
+      {pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false},
     ],
 
     /*
@@ -45,7 +45,7 @@ module.exports = function (config) {
      * preprocess matching files before serving them to the browser
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
-    preprocessors: { './src/config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap'] },
+    preprocessors: {'./src/config/spec-bundle.js': ['coverage', 'webpack', 'sourcemap']},
 
     // Webpack Config at ./webpack.test.js
     webpack: testWebpackConfig,
@@ -55,7 +55,9 @@ module.exports = function (config) {
     // coverageReporter: {
     //   type: 'in-memory'
     // },
-    reporters: ['progress', 'junit'],
+    coverageReporter: { dir: 'coverage/', includeAllSources: true },
+    reporters: ['progress', 'junit', 'coverage-istanbul'],
+
 
     // the default configuration
     junitReporter: {
@@ -108,7 +110,7 @@ module.exports = function (config) {
     logLevel: config.LOG_WARN,
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
     /*
      * start these browsers
@@ -130,7 +132,7 @@ module.exports = function (config) {
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
      */
-    singleRun: true
+    singleRun: false
   };
 
   if (process.env.TRAVIS) {
@@ -140,4 +142,5 @@ module.exports = function (config) {
   }
 
   config.set(configuration);
-};
+}
+;

@@ -21,7 +21,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public isGameStarted: boolean;
 
-  private subscriptions: Subscription[] = [];
+  public subscriptions: Subscription[] = [];
 
   public score;
 
@@ -59,7 +59,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public buyWater() {
     if (this.player.money > 0) {
-      this.player.cistern.capacity += this.player.money/Config.waterBuyingPrice;
+      this.player.cistern.capacity += this.player.money / Config.waterBuyingPrice;
       this.player.money = 0;
     }
   }
