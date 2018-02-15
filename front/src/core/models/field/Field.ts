@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import { Config } from '../../../config/config';
 import { Cistern } from '../cistern/Cistern';
 
+
 /**
  * Entity which represents a Field.
  *
@@ -48,6 +49,9 @@ export class Field {
         this.cistern.capacity -= this.consumption;
       }
     }
+
+    this.increaseConsumption();
+
   }
 
   public checkHarvestingPossible() {

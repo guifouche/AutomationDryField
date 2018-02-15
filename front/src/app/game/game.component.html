@@ -4,25 +4,40 @@
 
 <ng-template #alreadyRegistered>
   <div>
-    <h2>Temps écoulé</h2>
-    <h2>{{ gameElapsedTime | date: format }}</h2>
-    <div class="money">
-      <h2>Argent disponible : </h2>
-      <h2>{{ player?.money }}</h2>
-    </div>
-    <div class="water">
-      <h2>Réserve d'eau totale : </h2>
-      <h2>{{ player?.cistern.capacity }}</h2>
-    </div>
+    <table>
+      <tr>
+        <th>
+          Temps écoulé
+        </th>
+        <th>
+          Réserve d'eau totale
+        </th>
+        <th>
+          Argent disponible
+        </th>
+      </tr>
+      <tr>
+        <td>
+          {{ gameElapsedTime | date: format }}
+        </td>
+        <td>
+          {{ player.cistern.capacity }}
+        </td>
+        <td>
+          {{ player.money }}
+        </td>
+      </tr>
+    </table>
+    <button id="buyWater" class="buyWater" (click)="buyWater()">Acheter de l'eau</button>
     <div class="row">
       <div class="column">
-        <app-field name="field" (field)="Field()"></app-field>
+        <app-field name="field" (fieldIrrigated)="playerIrrigatedField($event)"></app-field>
       </div>
       <div class="column">
-        <app-field name="field" (field)="Field()"></app-field>
+        <app-field name="field" (fieldIrrigated)="playerIrrigatedField($event)"></app-field>
       </div>
       <div class="column">
-        <app-field name="field" (field)="Field()"></app-field>
+        <app-field name="field" (fieldIrrigated)="playerIrrigatedField($event)"></app-field>
       </div>
     </div>
   </div>
