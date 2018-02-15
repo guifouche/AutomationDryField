@@ -5,7 +5,25 @@
 module.exports = function (config) {
   var testWebpackConfig = require('./webpack.test.js')({ env: 'test' });
 
+  var customLaunchers = {
+    sl_chrome: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      platform: 'Windows 10',
+      version: '35'
+    },
+    // sl_firefox: {
+    //   base: 'SauceLabs',
+    //   browserName: 'firefox',
+    //   version: '30'
+    // }
+  };
+
   var configuration = {
+
+    sauceLabs: {
+      testName: 'Web App Unit Tests'
+    },
 
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
@@ -55,7 +73,7 @@ module.exports = function (config) {
     // coverageReporter: {
     //   type: 'in-memory'
     // },
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'junit', 'dots', 'saucelabs'],
 
     // the default configuration
     junitReporter: {
@@ -116,15 +134,11 @@ module.exports = function (config) {
      */
     browsers: [
       // 'Chrome',
-      'PhantomJS'
+      // 'PhantomJS'
+      Object.keys(customLaunchers)
     ],
 
-    customLaunchers: {
-      ChromeTravisCi: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
+    customLaunchers: customLaunchers,
 
     /*
      * Continuous Integration mode
@@ -132,12 +146,6 @@ module.exports = function (config) {
      */
     singleRun: true
   };
-
-  if (process.env.TRAVIS) {
-    configuration.browsers = [
-      'ChromeTravisCi'
-    ];
-  }
 
   config.set(configuration);
 };

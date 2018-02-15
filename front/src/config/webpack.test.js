@@ -16,6 +16,8 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+process.env.SAUCE_USERNAME = "ChildrenOfTek";
+process.env.SAUCE_ACCESS_KEY = "73d8bcda-5bc2-4cc0-8f9c-7c1ffd7173df";
 
 /**
  * Webpack configuration
