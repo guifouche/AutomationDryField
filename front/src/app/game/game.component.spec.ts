@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Player } from '../../core/models/player/Player';
 import { FieldComponent } from '../field/field.component';
 import { PlayerRegisterComponent } from '../player-register/player-register.component';
 
@@ -11,10 +12,10 @@ describe('GameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GameComponent, FieldComponent, PlayerRegisterComponent ],
-      imports: [ ReactiveFormsModule, FormsModule ]
+      declarations: [GameComponent, FieldComponent, PlayerRegisterComponent],
+      imports: [ReactiveFormsModule, FormsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,5 +26,38 @@ describe('GameComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('GameComponent should launch the app only after a player has registered', () => {
+
+    const player: Player = new Player('test');
+
+    it('should not have the isGameStarted flag set to true', () => {
+      expect(this.isGameStarted).toBeFalsy();
+    });
+
+    it('should not have a player before the method playerRegistered is called', () => {
+      expect(this.player).toBeUndefined();
+    });
+
+    it('should not have a game before the method playerRegistered is called', () => {
+      expect(this.game).toBeUndefined();
+    });
+
+    it('should call method start on this.game', () => {
+
+      this.playerRegistered(player);
+
+      spyOn(this.game, 'start');
+      expect(this.game.start).toHaveBeenCalled();
+    });
+
+    it('should add the sub to the subscription array', () => {
+      expect(this.subscriptions.length).toEqual(1);
+    });
+
+    it('should have the isGameStarted flag set to true', () => {
+      expect(this.isGameStarted).toBeTruthy();
+    });
   });
 });
