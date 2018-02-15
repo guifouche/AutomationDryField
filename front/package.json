@@ -58,6 +58,7 @@
     "tslint": "~5.9.1",
     "tslint-loader": "^3.5.2",
     "typescript": "~2.5.3",
+    "wd": "^1.5.0",
     "webpack": "^3.5.5"
   }
 }
