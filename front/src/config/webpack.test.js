@@ -185,6 +185,10 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      /**
+       * Plugin: karma-sauce-launcher
+       */
+      'karma-sauce-launcher',
 
       /**
        * Plugin: DefinePlugin
