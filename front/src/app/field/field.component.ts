@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Config } from '../../config/config';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Field } from '../../core/models/field/Field';
+import { Player } from '../../core/models/player/Player';
+import { Game } from '../../core/models/game/Game';
+import { Config} from '../../config/config';
 
 @Component({
   selector: 'app-field',
@@ -11,28 +13,34 @@ export class FieldComponent implements OnInit {
 
   public field: Field;
   public config = Config;
+  public player: Player;
 
-  @Input() public playerWater;
+  @Output() public fieldIrrigated = new EventEmitter<number>();
+  @Output() public fieldHarvested = new EventEmitter<number>();
 
   constructor() {
     this.field = new Field();
   }
 
   ngOnInit() {
-    this.playerWater = this.playerWater--;
   }
 
   public irrigateField(amount: number) {
     this.field.irrigate(amount);
+    this.fieldIrrigated.emit(amount);
   }
 
   public checkHarvesting() {
     return this.field.isHarvestingPossible;
   }
 
-  public harvestField() {
+  public harvestField(money: number) {
     this.field.resetHarvest();
+    this.fieldHarvested.emit(money);
   }
 
+  public checkEmptyMainCistern() {
+    return (this.player.cistern.capacity <= 0);
+  }
 
 }

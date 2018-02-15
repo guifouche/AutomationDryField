@@ -1,4 +1,6 @@
+import { EventEmitter } from '@angular/core';
 import { Config } from '../../../config/config';
+import * as Rx from 'rxjs/Rx';
 /**
  * Entity which represents a Player.
  *
@@ -6,6 +8,7 @@ import { Config } from '../../../config/config';
  */
 import { Cistern } from '../cistern/Cistern';
 import { Field } from '../field/Field';
+import { Observable } from 'rxjs/Observable';
 
 export class Player {
 
@@ -29,6 +32,8 @@ export class Player {
    */
   public username: string;
 
+  public harvestMoney$ = new Observable<number>();
+
   constructor(username: string) {
     this.cistern.capacity = Config.initialAmountOfWater;
     this.money = Config.initialMoney;
@@ -50,5 +55,9 @@ export class Player {
       this.harvestCount++;
       this.money += Config.harvestSellingPrice;
       field.isHarvestingPossible = false;
+  }
+
+  public start() {
+    this.harvestMoney$ = Rx.Observable.timer(0, 1000);
   }
 }

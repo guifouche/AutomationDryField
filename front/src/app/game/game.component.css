@@ -1,4 +1,18 @@
 .column {
-    float: left;
-    width: 30%;
+    float:left;
+    width:30%;
 }
+
+table {
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+    width: 100%
+    }
+   td { 
+    border-width: 1px;
+    border-style: solid;
+    text-align: center; 
+    font-size: large;
+    font-weight: bold
+    }

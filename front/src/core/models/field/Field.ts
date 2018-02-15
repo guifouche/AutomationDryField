@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import { Config } from '../../../config/config';
 import { Cistern } from '../cistern/Cistern';
 
+
 /**
  * Entity which represents a Field.
  *
@@ -29,6 +30,8 @@ export class Field {
    */
   public consumption: number;
 
+  public player: Player;
+
   constructor() {
     this.remainingTime = Config.timeForAfieldToBeMature;
     this.isHarvestingPossible = false;
@@ -38,20 +41,23 @@ export class Field {
   }
 
   public grow() {
+  
     this.remainingTime.subtract(1, 's');
     this.checkHarvestingPossible();
 
     if (!this.isHarvestingPossible) {
       if (this.checkFieldIsDry()) {
-        this.remainingTime = Config.timeForAfieldToBeMature;
+        this.remainingTime = moment.duration(20, 's');
       } else {
+        
         this.cistern.capacity -= this.consumption;
       }
     }
+    this.increaseConsumption();
   }
 
   public checkHarvestingPossible() {
-    if (this.remainingTime === moment.duration(0)) {
+    if (this.remainingTime <= moment.duration(0)) {
       this.isHarvestingPossible = true;
     }
   }
@@ -65,17 +71,17 @@ export class Field {
   }
 
   public start() {
-    setInterval(this.grow(), Config.initialInterval);
+    setInterval(this.grow.bind(this), Config.initialInterval);
   }
 
   public resetHarvest() {
-    this.remainingTime = Config.timeForAfieldToBeMature;
+    this.remainingTime = moment.duration(20, 's');
     this.isHarvestingPossible = false;
   }
 
   public increaseConsumption() {
     if (this.consumption < 2) {
-      this.consumption += 0.1;
+      this.consumption += 0.05;
     }
   }
 
