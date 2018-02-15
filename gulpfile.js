@@ -56,13 +56,13 @@ let dirs = {
 };
 
 gulp.task('install-server-dev',  (done) => {
-    spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install','--dev'], {stdio: 'inherit'})
+    spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install','--only=dev'], {stdio: 'inherit'})
 .on('close', done);
 });
 
 gulp.task('install-front-dev',  (done) => {
     process.chdir(dirs.front);
-spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install','--dev'], {stdio: 'inherit'})
+spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install','--only=dev'], {stdio: 'inherit'})
     .on('close', done)
 });
 
