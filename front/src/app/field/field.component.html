@@ -7,6 +7,6 @@
   <br />
   <p>Consommation actuelle : {{ field.consumption }}/s</p>
 
-  <button [disabled]="checkEmptyMainCistern()" id="irrigate" class="irrigate" (click)="irrigateField(config.irrigateAmount)">Arroser le champ</button>
+  <button id="irrigate" class="irrigate" (click)="irrigateField(config.irrigateAmount)">Arroser le champ</button>
   <button [disabled]="!checkHarvesting()" ngClass="{{checkHarvesting() ? 'harvest' : 'notReady'}}" id="harvest" (click)="harvestField(config.harvestSellingPrice)">Récolter le champ</button>
 </div>

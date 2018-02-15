@@ -29,8 +29,8 @@ export class Field {
    * Number to specify the quantity of water consumed by the field each second
    */
   public consumption: number;
-
-  public player: Player;
+  
+  public interval;
 
   constructor() {
     this.remainingTime = Config.timeForAfieldToBeMature;
@@ -41,7 +41,9 @@ export class Field {
   }
 
   public grow() {
-  
+
+    //this.isGameOver();
+
     this.remainingTime.subtract(1, 's');
     this.checkHarvestingPossible();
 
@@ -49,7 +51,6 @@ export class Field {
       if (this.checkFieldIsDry()) {
         this.remainingTime = moment.duration(20, 's');
       } else {
-        
         this.cistern.capacity -= this.consumption;
       }
     }
@@ -71,7 +72,7 @@ export class Field {
   }
 
   public start() {
-    setInterval(this.grow.bind(this), Config.initialInterval);
+    this.interval = setInterval(this.grow.bind(this), Config.initialInterval);
   }
 
   public resetHarvest() {
@@ -83,6 +84,16 @@ export class Field {
     if (this.consumption < 2) {
       this.consumption += 0.05;
     }
+  }
+
+  public isGameOver() {
+    //if () {
+      this.stop();
+    //}
+  }
+
+  public stop() {
+    clearInterval(this.interval);
   }
 
 }

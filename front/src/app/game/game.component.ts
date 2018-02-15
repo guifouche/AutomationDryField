@@ -65,7 +65,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  public setMoney(amount: number) {
+  public addMoney(amount: number) {
     this.player.money += amount;
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Field } from '../../core/models/field/Field';
-import { Player } from '../../core/models/player/Player';
 import { Game } from '../../core/models/game/Game';
 import { Config} from '../../config/config';
 
@@ -13,13 +12,14 @@ export class FieldComponent implements OnInit {
 
   public field: Field;
   public config = Config;
-  public player: Player;
+  public numberOfDryFields: number;
 
   @Output() public fieldIrrigated = new EventEmitter<number>();
   @Output() public fieldHarvested = new EventEmitter<number>();
 
   constructor() {
     this.field = new Field();
+    this.numberOfDryFields = 0;
   }
 
   ngOnInit() {
@@ -39,8 +39,10 @@ export class FieldComponent implements OnInit {
     this.fieldHarvested.emit(money);
   }
 
-  public checkEmptyMainCistern() {
-    return (this.player.cistern.capacity <= 0);
+  public checkIfFieldIsDry(field: Field) {
+    if (this.checkIfFieldIsDry) {
+      this.numberOfDryFields++;
+    }
   }
 
 }
